@@ -6,8 +6,6 @@ mod logic;
 // #[allow(dead_code)]
 mod flow;
 // #[allow(dead_code)]
-mod utils;
-// #[allow(dead_code)]
 mod rendering;
 
 fn main() {

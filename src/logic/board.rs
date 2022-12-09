@@ -1,5 +1,3 @@
-use crate::utils::xy_to_v;
-
 use super::piece::{Piece, PieceAgent};
 
 pub struct Board {
@@ -14,13 +12,22 @@ impl Board {
 		Self {grid: vec![vec![None; Self::WIDTH];Self::HEIGHT]}
 	}
 
-	// pub fn check_line_clear(&mut self) -> u8 {
-	// 	let res: u8 = 0;
+	pub fn line_clear(&mut self) -> u8 {
+		let mut res: u8 = 0;
 
-		
+		loop {
+			let clear = self.grid.iter().last().unwrap().iter().all(|item| item.is_some());
+			if clear {
+				self.grid.remove(Self::HEIGHT-1);
+				self.grid.insert(0, vec![None;Self::WIDTH]);
+				res += 1;
+				continue;
+			} 
+			break;
+		}
 
-	// 	res
-	// }
+		res
+	}
 
 	pub fn hard_drop_apply_only(&mut self, piece: &mut PieceAgent) -> i16 {
 		let dinstance = piece
