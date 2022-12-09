@@ -1,4 +1,4 @@
-use cgmath::Vector2;
+use crate::utils::Vec2;
 
 #[derive(Debug, Clone, Copy)]
 pub struct Piece {
@@ -18,31 +18,43 @@ pub enum PieceType {
 
 pub struct PieceAgent {
 	pub template: PieceTemplate,
-	pub position: Vector2<i16>
+	pub position: Vec2
 }
 
 impl PieceAgent {
-	pub fn new(template: PieceTemplate, position: Vector2<i16>) -> Self {
+	pub fn new(template: PieceTemplate, position: Vec2) -> Self {
 		PieceAgent { template, position }
 	}
 
 	pub fn rotate_right(&mut self) {
-
+		for i in self
+			.template
+			.offsets.iter_mut() {
+			let temp = i.y;
+			i.y = - i.x;
+			i.x = temp;
+		}
 	}
 
 	pub fn rotate_left(&mut self) {
-		
+		for i in self
+			.template
+			.offsets.iter_mut() {
+			let temp = i.y;
+			i.y = i.x;
+			i.x = -temp;
+		}
 	}
 }
 
 #[derive(Debug, Clone)]
 pub struct PieceTemplate {
-	pub offsets: Vec<Vector2<i16>>,
+	pub offsets: [Vec2;4],
 	pub piece_type: PieceType
 }
 
 impl PieceTemplate {
-	pub fn new(offsets: Vec<Vector2<i16>>, piece_type: PieceType) -> Self {
+	pub fn new(offsets: [Vec2;4], piece_type: PieceType) -> Self {
 		Self { offsets, piece_type }
 	}
 }

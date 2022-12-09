@@ -7,6 +7,8 @@ mod logic;
 mod flow;
 // #[allow(dead_code)]
 mod rendering;
+// #[allow(dead_code)]
+mod utils;
 
 fn main() {
     let engine = &mut TetrisGame::new();

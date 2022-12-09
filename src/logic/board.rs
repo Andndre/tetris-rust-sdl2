@@ -24,7 +24,7 @@ impl Board {
 				continue;
 			} 
 			break;
-		}
+		};
 
 		res
 	}

@@ -1,15 +1,14 @@
 use std::time::Duration;
 
-use cgmath::Vector2;
 use sdl2::{event::Event, keyboard::Keycode, pixels::Color};
 
-use crate::{logic::TetrisGame, rendering::{Renderer}};
+use crate::{logic::TetrisGame, rendering::Renderer, utils::Vec2};
 
 pub struct GameFlow;
 
 impl GameFlow {
 	pub fn run(game: &mut TetrisGame) {
-		game.spawn_piece(Vector2 {x: 2, y: 2});
+		game.spawn_piece(Vec2 {x: 2, y: 2});
 		
 		let renderer = &mut Renderer::new();
 		
