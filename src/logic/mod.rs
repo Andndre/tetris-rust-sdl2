@@ -14,7 +14,7 @@ pub mod score;
 
 pub struct TetrisGame {
     pub board: Board,
-    pub templates: [PieceTemplate; 7],
+    templates: [PieceTemplate; 7],
     pub nexts: Vec<PieceTemplate>,
     pub active_piece: Option<PieceAgent>,
     pub rng: ThreadRng,
@@ -97,6 +97,13 @@ impl TetrisGame {
         }
     }
 
+    pub fn init_game(&mut self) {
+        for _i in 0..6 {
+            let new_template = self.pick_template_copy();
+            self.nexts.push(new_template);
+        }
+    }
+
     fn pick_template_copy(&mut self) -> PieceTemplate {
         self.templates
             .choose(&mut self.rng)
@@ -105,8 +112,17 @@ impl TetrisGame {
             .clone()
     }
 
-    pub fn spawn_piece(&mut self, position: Vec2) {
-        self.active_piece = Some(PieceAgent::new(self.pick_template_copy(), position));
+    pub fn spawn_piece(&mut self) {
+        let template = self.nexts.remove(5);
+        let new_template = self.pick_template_copy();
+        self.nexts.insert(0, new_template);
+        self.active_piece = Some(PieceAgent::new(
+            template,
+            Vec2 {
+                x: Board::WIDTH as i16 / 2,
+                y: 3,
+            },
+        ));
     }
 
     pub fn hard_drop(&mut self) {
