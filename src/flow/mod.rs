@@ -3,21 +3,15 @@ use std::time::Duration;
 use cgmath::Vector2;
 use sdl2::{event::Event, keyboard::Keycode, pixels::Color};
 
-use crate::{logic::TetrisGame, rendering::{Renderer, piece::Render}};
+use crate::{logic::TetrisGame, rendering::{Renderer}};
 
 pub struct GameFlow;
 
 impl GameFlow {
 	pub fn run(game: &mut TetrisGame) {
 		game.spawn_piece(Vector2 {x: 2, y: 2});
-
-		let piece = game.board.array[0].expect("");
 		
 		let renderer = &mut Renderer::new();
-		
-		piece.render(renderer);
-		// let texture_creater = canvas.texture_creator();
-		// texture_creater.create_texture_from_surface(surface);
 		
 		let mut event_pump = renderer.sdl_context.event_pump().unwrap();
 		let mut i = 0;

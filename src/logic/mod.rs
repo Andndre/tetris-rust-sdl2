@@ -73,7 +73,6 @@ impl TetrisGame {
 	}
 
 	fn pick_template_copy(&mut self) -> PieceTemplate {
-		self.board.array[0];
 		self
 			.templates
 			.choose(&mut self.rng)
