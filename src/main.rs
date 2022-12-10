@@ -11,6 +11,6 @@ mod rendering;
 mod utils;
 
 fn main() {
-    let engine = &mut TetrisGame::new();
-    GameFlow::run(engine);
+    let tetris = &mut TetrisGame::new();
+    GameFlow::run(tetris);
 }
