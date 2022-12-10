@@ -1,8 +1,8 @@
 # TETRIS
 
-## ⚠️ Development in progress
+### ⚠️ Development in progress
 
-**Designs**:
+## Designs
 
 1. Main menu
    ![Design Main Menu](https://user-images.githubusercontent.com/81848639/206809599-42d3e268-264b-46ce-a403-b89c668ba9c0.png)
