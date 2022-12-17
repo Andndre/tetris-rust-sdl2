@@ -107,7 +107,6 @@ impl TetrisGame {
     fn pick_template_copy(&mut self) -> PieceTemplate {
         self.templates
             .choose(&mut self.rng)
-            .clone()
             .expect("Cannot pick piece template")
             .clone()
     }
