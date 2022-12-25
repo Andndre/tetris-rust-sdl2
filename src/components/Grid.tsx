@@ -2,7 +2,8 @@ interface GridProps {
   grid: string[][];
 }
 
-export default function Grid(props: GridProps) {
+// grid of colors
+export default (props: GridProps) => {
   return (
     <div className="flex flex-col gap-1">
       {props.grid.map((row, i) => {
@@ -22,4 +23,4 @@ export default function Grid(props: GridProps) {
       })}
     </div>
   );
-}
+};
